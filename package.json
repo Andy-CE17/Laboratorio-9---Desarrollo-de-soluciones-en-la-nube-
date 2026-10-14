@@ -1,0 +1,23 @@
+{
+  "name": "laboratorio-9-galeria-s3",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Galería privada de imágenes con Amazon S3 y cargas prefirmadas",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.910.0",
+    "@aws-sdk/s3-presigned-post": "^3.910.0",
+    "@aws-sdk/s3-request-presigner": "^3.910.0",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.1.0"
+  }
+}

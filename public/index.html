@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#18211f">
+  <meta name="description" content="Galería privada de imágenes en Amazon S3 con carga directa y acceso temporal.">
+  <title>Lúmina — Archivo visual</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/styles.css?v=3">
+  <script src="/app.js?v=3" type="module"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Lúmina, ir al inicio">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16"/><circle cx="20" cy="20" r="8"/><path d="M20 4v8M36 20h-8M20 36v-8M4 20h8"/></svg></span>
+        <span><strong>LÚMINA<span class="brand-dot">.</span></strong><small>ARCHIVO VISUAL</small></span>
+      </a>
+
+      <div class="side-group">
+        <p class="side-label">ESPACIO DE TRABAJO</p>
+        <a class="side-link is-active" href="#inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-7h6v7"/></svg><span>Inicio</span></a>
+        <a class="side-link" href="#galeria"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m3 17 6-5 4 3 3-2 5 4"/></svg><span>Galería</span></a>
+        <a class="side-link" href="#cargar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4"/><path d="M4 16v4h16v-4"/></svg><span>Subir imagen</span></a>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="privacy-card"><span class="privacy-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><strong>Archivo privado</strong><p>Tu colección permanece protegida en Amazon S3.</p></div>
+        <div class="side-footer"><span class="footer-orb"></span><span>LABORATORIO 09<br><small>Desarrollo en la nube</small></span></div>
+      </div>
+    </aside>
+
+    <main class="main" id="inicio">
+      <header class="topbar">
+        <div class="breadcrumb"><span>ESPACIO DE TRABAJO</span><span class="slash">/</span><strong>INICIO</strong></div>
+        <div class="top-actions"><span class="service-chip"><span class="service-dot" id="service-dot"></span><span id="service-label">Comprobando conexión</span></span><span class="top-avatar">L9</span></div>
+      </header>
+
+      <div class="content">
+        <section class="welcome-row" aria-label="Presentación">
+          <div><p class="eyebrow">TU ESPACIO CREATIVO</p><h1>Archivo visual<span class="period">.</span></h1><p class="intro">Un lugar para guardar, descubrir y cuidar cada imagen.</p></div>
+          <span class="date-stamp" id="today"></span>
+        </section>
+
+        <section class="hero" aria-label="Gestiona tus imágenes">
+          <div class="hero-shade"></div>
+          <div class="hero-content"><div class="hero-kicker"><span class="kicker-line"></span> FOTOGRAFÍA EN LA NUBE</div><h2>Donde cada historia<br><em>encuentra su lugar.</em></h2><p>Organiza tus fotografías en una galería privada, accesible y lista para inspirar tu próximo proyecto.</p><a class="hero-button" href="#cargar">Subir mi primera imagen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></div>
+          <div class="hero-corner">01 <span>/</span> TU ARCHIVO</div>
+        </section>
+
+        <section class="overview" aria-label="Resumen de la colección">
+          <div class="overview-item"><span class="overview-icon amber"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1"/><path d="m3 17 6-5 4 3 3-2 5 4"/></svg></span><div><span class="overview-label">TOTAL DE IMÁGENES</span><strong id="image-count">—</strong></div></div>
+          <div class="overview-item"><span class="overview-icon sage"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><div><span class="overview-label">VISIBILIDAD</span><strong>Privada</strong></div></div>
+          <div class="overview-item"><span class="overview-icon blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a5 5 0 0 0 5 4h10a4 4 0 0 0 .3-8A7 7 0 0 0 6 11a5 5 0 0 0-2 6Z"/><path d="m9 15 3-3 3 3m-3-3v7"/></svg></span><div><span class="overview-label">ALMACENAMIENTO</span><strong>Amazon S3</strong></div></div>
+        </section>
+
+        <div class="workspace-grid">
+          <section class="panel upload-panel" id="cargar" aria-labelledby="upload-title">
+            <div class="panel-heading"><div><p class="eyebrow">NUEVA IMAGEN</p><h2 id="upload-title">Subir a mi archivo</h2></div><span class="heading-number">01</span></div>
+            <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Seleccionar o arrastrar una imagen"><input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" hidden><div class="drop-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4"/><path d="M4 16v4h16v-4"/></svg></div><strong id="drop-title">Arrastra tu imagen aquí</strong><span>o <span class="text-link">explora tus archivos</span></span><small>JPG, PNG o WebP · máximo 5 MB</small></div>
+            <div class="selected-file" id="selected-file" hidden><div class="selected-thumb" id="selected-thumb"></div><div class="selected-info"><strong id="selected-name"></strong><span id="selected-size"></span></div><button class="icon-button" id="clear-file" type="button" aria-label="Quitar imagen seleccionada">×</button></div>
+            <button class="primary-button" id="upload-button" type="button" disabled>Subir imagen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button>
+            <div class="upload-progress" id="upload-progress" hidden><div class="progress-track"><span></span></div><span>Transfiriendo directamente a S3…</span></div>
+            <div class="upload-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>El archivo viaja directo a S3. El navegador nunca recibe credenciales de AWS.</span></div>
+          </section>
+
+          <section class="panel gallery-panel" id="galeria" aria-labelledby="gallery-title">
+            <div class="panel-heading gallery-heading"><div><p class="eyebrow">TU COLECCIÓN</p><h2 id="gallery-title">Galería de imágenes</h2></div><button class="subtle-button" id="refresh-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2 6M20 4v7h-7"/></svg> Actualizar</button></div>
+            <div class="gallery-toolbar"><span id="gallery-summary">Cargando imágenes…</span><div class="toolbar-controls"><label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="search-input" type="search" placeholder="Buscar imagen" aria-label="Buscar imagen"></label><select id="sort-select" aria-label="Ordenar imágenes"><option value="newest">Más recientes</option><option value="oldest">Más antiguas</option><option value="name">Por nombre</option></select></div></div>
+            <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
+            <div class="empty-state" id="empty-state" hidden><div class="empty-art" aria-hidden="true"><span class="empty-sun"></span><span class="empty-hill one"></span><span class="empty-hill two"></span></div><p class="eyebrow">UN LIENZO EN BLANCO</p><h3>Tu colección comienza aquí.</h3><p>Sube una imagen y la verás aparecer en este espacio.</p><a href="#cargar">Subir una imagen <span>↗</span></a></div>
+            <div class="gallery-error" id="gallery-error" hidden><div class="error-symbol">!</div><h3>No pudimos cargar la galería</h3><p id="gallery-error-message"></p><button class="subtle-button" id="retry-button" type="button">Intentar de nuevo</button></div>
+          </section>
+        </div>
+        <footer class="page-footer"><span>LÚMINA · LABORATORIO 09</span><span>Diseñado para crear con tranquilidad.</span></footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="preview-dialog" id="preview-dialog" aria-label="Vista previa de imagen"><button type="button" class="dialog-close" id="dialog-close" aria-label="Cerrar vista previa">×</button><img id="preview-image" alt=""><div class="dialog-caption"><strong id="preview-name"></strong><span id="preview-date"></span></div></dialog>
+  <dialog class="confirm-dialog" id="confirm-dialog" aria-labelledby="confirm-title"><div class="confirm-icon" aria-hidden="true">×</div><h2 id="confirm-title">¿Eliminar esta imagen?</h2><p>La imagen dejará de mostrarse en tu galería. Con el versionado del bucket, podrás recuperar una versión anterior desde S3.</p><div class="confirm-actions"><button type="button" id="cancel-delete">Cancelar</button><button type="button" id="confirm-delete">Eliminar imagen</button></div></dialog>
+</body>
+</html>
